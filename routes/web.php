@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
-// Langsung panggil index blade tanpa controller berita
-Route::get('/', function () {
-    return view('index', ['posts' => \App\Models\Post::all()]); 
-});
+use App\Http\Controllers\PostController;
+
+Route::get('/', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

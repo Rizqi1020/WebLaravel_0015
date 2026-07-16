@@ -120,6 +120,18 @@
     <!-- Kolom Kiri: Main Content -->
     <div class="col-lg-8 pe-lg-4">
         
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show rounded-0" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="m-0 fw-bold">Berita Utama</h4>
+            <a href="{{ route('posts.create') }}" class="btn btn-danger fw-bold rounded-1"><i class="bi bi-plus-circle me-1"></i> Tambah Berita Baru</a>
+        </div>
+        
         @if($posts->isEmpty())
             <div class="alert alert-warning rounded-0 border-start border-4 border-warning">
                 <i class="bi bi-exclamation-triangle me-2"></i> Belum ada berita hari ini.
