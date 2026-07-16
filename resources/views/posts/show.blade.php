@@ -35,6 +35,11 @@
             {!! nl2br(e($post->content)) !!}
         </div>
 
+        <!-- Edit Action -->
+        <div class="mt-5 pt-4 border-top d-flex justify-content-end">
+            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-primary px-4 rounded-1 fw-bold">Edit Berita</a>
+        </div>
+
     </div>
 </div>
 @endsection

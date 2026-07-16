@@ -45,4 +45,32 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         return view('posts.show', compact('post'));
     }
+
+    public function edit($id)
+    {
+        $post = Post::findOrFail($id);
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'category' => 'nullable|string',
+            'publisher' => 'nullable|string',
+            'image' => 'nullable|url',
+        ]);
+
+        $post = Post::findOrFail($id);
+        $post->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'category' => $request->category ?? $post->category,
+            'publisher' => $request->publisher ?? $post->publisher,
+            'image' => $request->image,
+        ]);
+
+        return redirect()->route('posts.index')->with('success', 'Berita berhasil diupdate');
+    }
 }

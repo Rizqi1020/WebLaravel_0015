@@ -159,6 +159,9 @@
                     </div>
                 </a>
             </div>
+            <div class="d-flex justify-content-end gap-2 mb-4 mt-2">
+                <a href="{{ route('posts.edit', $headline->id) }}" class="btn btn-sm btn-outline-primary rounded-1">Edit</a>
+            </div>
 
             <!-- TERKINI (List Berita) -->
             <h4 class="sidebar-title mt-5">Berita Terkini</h4>
@@ -185,8 +188,13 @@
                         <p class="text-muted d-none d-md-block mb-2" style="font-size: 0.9rem; line-height: 1.5;">
                             {{ Str::limit($post->content ?? '', 120) }}
                         </p>
-                        <div class="news-meta mt-auto">
-                            {{ $post->created_at ? $post->created_at->diffForHumans() : 'Beberapa saat lalu' }}
+                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                            <div class="news-meta">
+                                {{ $post->created_at ? $post->created_at->diffForHumans() : 'Beberapa saat lalu' }}
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-outline-primary rounded-1" style="font-size: 0.75rem;">Edit</a>
+                            </div>
                         </div>
                     </div>
                 </div>
