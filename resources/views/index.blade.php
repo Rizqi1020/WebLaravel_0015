@@ -140,7 +140,7 @@
             <!-- HIGHLIGHT / HEADLINE (Berita Pertama) -->
             @php $headline = $posts->first(); @endphp
             <div class="headline-card shadow-sm">
-                <a href="#" class="text-decoration-none">
+                <a href="{{ route('posts.show', $headline->id) }}" class="text-decoration-none">
                     @if(!empty($headline->image))
                         <img src="{{ $headline->image }}" alt="Headline">
                     @else
@@ -167,7 +167,7 @@
                 @foreach ($posts->skip(1) as $post)
                 <div class="row news-list-item">
                     <div class="col-4 col-md-3">
-                        <a href="#">
+                        <a href="{{ route('posts.show', $post->id) }}">
                             @if(!empty($post->image))
                                 <img src="{{ $post->image }}" class="news-thumbnail" alt="Thumbnail">
                             @else
@@ -179,7 +179,7 @@
                     </div>
                     <div class="col-8 col-md-9 d-flex flex-column justify-content-center">
                         <div class="news-category-label mb-1">{{ $post->category ?? 'NASIONAL' }}</div>
-                        <a href="#" class="news-title-link">
+                        <a href="{{ route('posts.show', $post->id) }}" class="news-title-link">
                             <h3 class="fw-bold mb-2" style="font-size: 1.2rem; line-height: 1.4;">{{ $post->title }}</h3>
                         </a>
                         <p class="text-muted d-none d-md-block mb-2" style="font-size: 0.9rem; line-height: 1.5;">
