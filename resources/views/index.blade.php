@@ -161,6 +161,11 @@
             </div>
             <div class="d-flex justify-content-end gap-2 mb-4 mt-2">
                 <a href="{{ route('posts.edit', $headline->id) }}" class="btn btn-sm btn-outline-primary rounded-1">Edit</a>
+                <form action="{{ route('posts.destroy', $headline->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus berita ini?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm btn-outline-danger rounded-1">Hapus</button>
+                </form>
             </div>
 
             <!-- TERKINI (List Berita) -->
@@ -194,6 +199,11 @@
                             </div>
                             <div class="d-flex gap-2">
                                 <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-outline-primary rounded-1" style="font-size: 0.75rem;">Edit</a>
+                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus berita ini?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-outline-danger rounded-1" style="font-size: 0.75rem;">Hapus</button>
+                                </form>
                             </div>
                         </div>
                     </div>

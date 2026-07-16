@@ -35,9 +35,14 @@
             {!! nl2br(e($post->content)) !!}
         </div>
 
-        <!-- Edit Action -->
-        <div class="mt-5 pt-4 border-top d-flex justify-content-end">
+        <!-- Edit & Delete Action -->
+        <div class="mt-5 pt-4 border-top d-flex gap-2 justify-content-end">
             <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-primary px-4 rounded-1 fw-bold">Edit Berita</a>
+            <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus berita ini?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-outline-danger px-4 rounded-1 fw-bold">Hapus Berita</button>
+            </form>
         </div>
 
     </div>
